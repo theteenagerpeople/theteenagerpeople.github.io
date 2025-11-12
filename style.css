@@ -1,0 +1,173 @@
+/* --- 1. Root & Body --- */
+:root {
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    --color-dark: #15120c;
+    --color-light-text: #e0e0e0;
+    --color-dim-text: #a0a0a0;
+    --color-reddit: #ff4500;
+    --color-discord: #5865F2;
+    --color-card-bg: #1a1a1b; /* Reddit's post bg color */
+    --color-card-border: #343536; /* Reddit's border color */
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: var(--color-dark);
+    font-family: var(--font-body);
+    color: var(--color-light-text);
+}
+
+/* --- 2. Banner --- */
+.banner {
+    width: 100%;
+    height: 128px;
+    background-image: url('we.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- 3. NEW Filter Bar --- */
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 20px auto 0 auto;
+    padding: 0 20px;
+    height: 40px;
+    gap: 20px;
+}
+.filter-main {
+    height: 100%;
+    width: 200px; /* Width of the left box */
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: 20px; /* Rounded pill shape */
+}
+.filter-links {
+    display: flex;
+    gap: 15px; /* Space between circles */
+}
+.filter-circle {
+    height: 40px;
+    width: 40px;
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: 50%; /* Perfect circle */
+}
+
+/* --- 4. Main Content Layout --- */
+.main-content-wrapper {
+    display: flex;
+    flex-wrap: wrap; 
+    max-width: 1200px;
+    margin: 20px auto 60px auto; 
+    padding: 0 20px;
+    gap: 30px;
+}
+
+/* ===== 1. THIS SECTION IS CHANGED ===== */
+/* Column 1: The Feed (NOW A CARD) */
+.feed-container {
+    /* Changed from flex: 2 to flex: 1 to take remaining space */
+    flex: 1; 
+    min-width: 400px;
+    
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: 16px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden; 
+}
+
+/* ===== 2. THIS SECTION IS CHANGED ===== */
+/* Column 2: The Sidebar (ALREADY A CARD) */
+.sidebar-container {
+    /* Replaced 'flex: 1' with a fixed width */
+    width: 260px;
+    flex-shrink: 0; /* Stops it from shrinking */
+    
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: 16px; 
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* --- 5. Live Reddit Feed Styling --- */
+/* (This is the SVG icon version) */
+
+#reddit-feed {
+    overflow: hidden;
+}
+
+#reddit-feed.loading p {
+    color: var(--color-dim-text);
+    padding: 20px;
+    text-align: center;
+}
+.post {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px;
+    border-bottom: 1px solid var(--color-card-border);
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+}
+.post:last-child {
+    border-bottom: none;
+}
+.post:hover {
+    background-color: #2a2a2c;
+}
+.post-score {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-light-text);
+    font-size: 1rem;
+    min-width: 60px;
+    margin-right: 12px;
+    padding-top: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.icon-upvote {
+    fill: var(--color-reddit);
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+.post-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.post-title {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--color-light-text);
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+.post:hover .post-title {
+    text-decoration: underline;
+}
+.post-comments {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--color-dim-text);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.icon-comment {
+    fill: var(--color-dim-text);
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
